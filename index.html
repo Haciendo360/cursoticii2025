@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Integral del Curso PNB-UNES (Gemini Integrado)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Font Awesome para Iconografía -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Chosen Palette: Tierra Soberana -->
+    <!-- Application Structure Plan: Se diseñó una estructura de navegación por pestañas semanales para un acceso directo y familiar (similar a un syllabus). La sección de "Introducción" actúa como un tablero de control con visualizaciones clave y un *LLM Tool* (Explicador de Conceptos) para la consulta rápida. El contenido semanal se organiza en acordeones para evitar la sobrecarga. La *Semana 5* (enfocada en herramientas nacionales) incluye otro *LLM Tool* (Generador de Casos Prácticos) para simular la aplicación de la doctrina, priorizando la exploración no lineal y la comprensión rápida sobre la lectura pasiva. -->
+    <!-- Visualization & Content Choices: 1. Línea de Tiempo (HTML/CSS): Objetivo=Organizar/Navegar, Interacción=Click, Justificación=Ofrece un mapa visual claro. 2. Gráfico de Radar (Chart.js/Canvas): Objetivo=Comparar/Sintetizar, Interacción=Tooltips, Justificación=Visualiza las competencias clave. 3. Acordeones de Contenido (HTML/JS): Objetivo=Organizar, Interacción=Click para expandir/colapsar. 4. Explicador de Conceptos (LLM/JS): Objetivo=Informar/Contextualizar, Interacción=Input/Búsqueda, Justificación=Ofrece definiciones en el marco doctrinario de la UNES, usando *Google Search grounding*. 5. Generador de Casos (LLM/JS): Objetivo=Aplicar/Sintetizar, Interacción=Click/Generación, Justificación=Convierte la teoría en escenarios de práctica policial con las herramientas nacionales. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+         <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#FEFCE8] text-[#36454F]">
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-8">
+            <!-- Título Principal con Icono de Escudo (Badge) -->
+            <h1 class="text-3xl md:text-4xl font-bold text-[#A16207] flex justify-center items-center gap-3">
+                <i class="fas fa-shield-alt text-4xl"></i>
+                Guía Integral Trayecto Inicial Proceso II-2025
+            </h1>
+            <!-- Subtítulo Principal Actualizado -->
+            <p class="text-lg md:text-xl mt-2 text-[#4A5568]">UNES Núcleo San Pedro | TICs y Soberanía Tecnológica</p>
+        </header>
+
+        <nav id="tabs" class="flex flex-wrap justify-center border-b-2 border-[#D1D5DB] mb-8">
+            <button data-tab="introduccion" class="tab-button text-sm md:text-base py-3 px-4 md:px-6 font-medium text-gray-600 hover:bg-[#FDE68A] transition-colors duration-200 rounded-t-lg">Introducción</button>
+            <button data-tab="semana1" class="tab-button text-sm md:text-base py-3 px-4 md:px-6 font-medium text-gray-600 hover:bg-[#FDE68A] transition-colors duration-200 rounded-t-lg">Semana 1</button>
+            <button data-tab="semana2" class="tab-button text-sm md:text-base py-3 px-4 md:px-6 font-medium text-gray-600 hover:bg-[#FDE68A] transition-colors duration-200 rounded-t-lg">Semana 2</button>
+            <button data-tab="semana3" class="tab-button text-sm md:text-base py-3 px-4 md:px-6 font-medium text-gray-600 hover:bg-[#FDE68A] transition-colors duration-200 rounded-t-lg">Semana 3</button>
+            <button data-tab="semana4" class="tab-button text-sm md:text-base py-3 px-4 md:px-6 font-medium text-gray-600 hover:bg-[#FDE68A] transition-colors duration-200 rounded-t-lg">Semana 4</button>
+            <button data-tab="semana5" class="tab-button text-sm md:text-base py-3 px-4 md:px-6 font-medium text-gray-600 hover:bg-[#FDE68A] transition-colors duration-200 rounded-t-lg">Semana 5</button>
+            <button data-tab="semana6" class="tab-button text-sm md:text-base py-3 px-4 md:px-6 font-medium text-gray-600 hover:bg-[#FDE68A] transition-colors duration-200 rounded-t-lg">Semana 6</button>
+        </nav>
+
+        <main id="content-area" class="space-y-8">
+            <!-- Introducción Section -->
+            <section id="introduccion" class="content-section">
+                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                    <h2 class="text-2xl font-bold text-[#A16207] mb-4 flex items-center gap-2">
+                        <i class="fas fa-chart-line"></i>
+                        Bienvenido al Tablero Interactivo del Curso
+                    </h2>
+                    <p class="mb-6 text-gray-600">Esta plataforma está diseñada para facilitar su aprendizaje a lo largo de las seis semanas del curso. Aquí encontrará una vista general, el desarrollo de habilidades clave y una línea de tiempo interactiva. Utilice la navegación superior para explorar en detalle el material de cada semana.</p>
+                    
+                    <!-- Gemini Feature 1: Terminology Explainer -->
+                    <div class="mt-8 p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+                        <h3 class="text-xl font-bold text-[#A16207] mb-3 flex items-center gap-2">
+                            <i class="fas fa-lightbulb"></i>
+                            Explicador de Conceptos Clave ✨
+                        </h3>
+                        <p class="text-sm mb-4 text-gray-700">Ingrese un término del curso (ej: 'Soberanía Tecnológica', 'SIMA', 'Software Libre') para obtener una definición concisa y contextualizada en la doctrina UNES/PNB.</p>
+                        <div class="flex flex-col md:flex-row gap-2">
+                            <input type="text" id="termInput" placeholder="Escriba aquí el concepto..." class="flex-grow p-2 border rounded-lg focus:ring-[#A16207] focus:border-[#A16207]">
+                            <button id="generateTermBtn" class="bg-[#A16207] text-white p-2 rounded-lg hover:bg-yellow-700 transition-colors duration-200 font-semibold flex-shrink-0">
+                                Generar Definición ✨
+                            </button>
+                        </div>
+                        <div id="termOutput" class="mt-4 p-3 bg-white border border-gray-300 rounded-lg min-h-[50px] text-gray-800">
+                            <p class="text-sm italic text-gray-500">La definición aparecerá aquí...</p>
+                        </div>
+                        <div id="termLoading" class="mt-2 text-sm text-yellow-800 hidden">Cargando definición, espere un momento...</div>
+                    </div>
+                    <!-- End Gemini Feature 1 -->
+
+                    <div class="grid md:grid-cols-2 gap-8 mt-8">
+                        <div>
+                            <h3 class="text-xl font-bold text-[#A16207] mb-4 text-center">Desarrollo de Habilidades y Actitudes</h3>
+                            <p class="text-sm text-center mb-4">Este gráfico visualiza el enfoque actitudinal y de competencias clave que se desarrollará a lo largo del curso. Cada semana fortalece una dimensión específica del perfil del funcionario PNB.</p>
+                            <div class="chart-container">
+                                <canvas id="skillsChart"></canvas>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-[#A16207] mb-4 text-center">Línea de Tiempo del Curso</h3>
+                            <p class="text-sm text-center mb-6">Navegue por el recorrido formativo. Haga clic en una semana para acceder directamente a su contenido detallado.</p>
+                            <div class="space-y-4">
+                                <!-- Timeline items -->
+                                <div data-tab-target="semana1" class="timeline-item p-4 bg-yellow-50 rounded-lg shadow-sm border border-yellow-200 hover:shadow-lg hover:bg-yellow-100 transition-all duration-200 cursor-pointer">
+                                    <p class="font-bold text-yellow-800 flex items-center gap-2"><i class="fas fa-microchip"></i> Semana 1: Soberanía Tecnológica</p>
+                                    <p class="text-sm text-yellow-700">Fundamentos de Hardware, Software y el rol del Software Libre.</p>
+                                </div>
+                                <div data-tab-target="semana2" class="timeline-item p-4 bg-yellow-50 rounded-lg shadow-sm border border-yellow-200 hover:shadow-lg hover:bg-yellow-100 transition-all duration-200 cursor-pointer">
+                                    <p class="font-bold text-yellow-800 flex items-center gap-2"><i class="fas fa-file-alt"></i> Semana 2: Ofimática Práctica</p>
+                                    <p class="text-sm text-yellow-700">Creación de informes, actas y análisis básicos de datos.</p>
+                                </div>
+                                <div data-tab-target="semana3" class="timeline-item p-4 bg-yellow-50 rounded-lg shadow-sm border border-yellow-200 hover:shadow-lg hover:bg-yellow-100 transition-all duration-200 cursor-pointer">
+                                    <p class="font-bold text-yellow-800 flex items-center gap-2"><i class="fas fa-globe-americas"></i> Semana 3: TICs y Sociedad</p>
+                                    <p class="text-sm text-yellow-700">Uso ético de redes, correo y su impacto en la comunidad.</p>
+                                </div>
+                                <div data-tab-target="semana4" class="timeline-item p-4 bg-yellow-50 rounded-lg shadow-sm border border-yellow-200 hover:shadow-lg hover:bg-yellow-100 transition-all duration-200 cursor-pointer">
+                                    <p class="font-bold text-yellow-800 flex items-center gap-2"><i class="fas fa-graduation-cap"></i> Semana 4: Formación Continua</p>
+                                    <p class="text-sm text-yellow-700">Plataformas virtuales (Moodle) y análisis comparado regional.</p>
+                                </div>
+                                <div data-tab-target="semana5" class="timeline-item p-4 bg-yellow-50 rounded-lg shadow-sm border border-yellow-200 hover:shadow-lg hover:bg-yellow-100 transition-all duration-200 cursor-pointer">
+                                    <p class="font-bold text-yellow-800 flex items-center gap-2"><i class="fas fa-siren-on"></i> Semana 5: TICs en Venezuela</p>
+                                    <p class="text-sm text-yellow-700">Plan de la Patria, VEN 911, SIMA y Cuadrantes de Paz.</p>
+                                </div>
+                                <div data-tab-target="semana6" class="timeline-item p-4 bg-yellow-50 rounded-lg shadow-sm border border-yellow-200 hover:shadow-lg hover:bg-yellow-100 transition-all duration-200 cursor-pointer">
+                                    <p class="font-bold text-yellow-800 flex items-center gap-2"><i class="fas fa-robot"></i> Semana 6: Inteligencia Artificial</p>
+                                    <p class="text-sm text-yellow-700">Prevención del delito desde una perspectiva ética y humanista.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Week 1 Section -->
+            <section id="semana1" class="content-section">
+                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                    <h2 class="text-2xl font-bold text-[#A16207] mb-2 flex items-center gap-2">
+                        <i class="fas fa-microchip"></i>
+                        Semana 1: Soberanía Tecnológica y Arquitectura de la PC
+                    </h2>
+                    <p class="mb-6 text-gray-600"><strong>Propósito:</strong> Comprender la computadora como herramienta esencial y diferenciar Hardware de Software bajo una óptica de soberanía tecnológica.</p>
+                    <div class="space-y-4">
+                        <div class="accordion-item border rounded-lg">
+                            <div class="accordion-header p-4 bg-yellow-50 flex justify-between items-center">
+                                <h3 class="font-semibold text-yellow-800 flex items-center gap-2"><i class="fas fa-book-open"></i> Contenido Ampliado</h3>
+                                <span class="text-xl text-yellow-800">+</span>
+                            </div>
+                            <div class="accordion-content p-4 border-t">
+                                <ul class="list-disc list-inside space-y-2">
+                                    <li><strong>La Computadora como Sistema:</strong> Conjunto de componentes interconectados que procesan información crítica (datos ciudadanos, patrones delictivos).</li>
+                                    <li><strong>Hardware (Lo tangible):</strong> Componentes físicos (CPU, RAM, Almacenamiento). Su mantenimiento es vital para la operatividad del Estado.</li>
+                                    <li><strong>Software (Lo intangible):</strong> Programas e instrucciones que dotan de inteligencia al hardware. Representa el capital intelectual.</li>
+                                    <li><strong>Sistema Operativo (SO):</strong> Administra recursos y garantiza la seguridad. Tipos: Propietarios (Windows) y Libres (GNU/Linux, Canaima).</li>
+                                    <li><strong>Software Libre (SL) y Revolución Bolivariana:</strong> Pilar de la independencia tecnológica. Garantiza transparencia, reduce vulnerabilidades y promueve el desarrollo endógeno.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="accordion-item border rounded-lg">
+                            <div class="accordion-header p-4 bg-yellow-50 flex justify-between items-center">
+                                <h3 class="font-semibold text-yellow-800 flex items-center gap-2"><i class="fas fa-lightbulb"></i> Ejemplos Prácticos</h3>
+                                <span class="text-xl text-yellow-800">+</span>
+                            </div>
+                            <div class="accordion-content p-4 border-t">
+                                <ul class="list-disc list-inside space-y-2">
+                                    <li><strong>Seguridad en Patrulla:</strong> Un equipo de comunicación con *firmware* libre otorga al Estado certeza técnica y control político total, evitando "puertas traseras".</li>
+                                    <li><strong>Resiliencia Operacional:</strong> Una falla eléctrica daña la RAM (hardware), pero el Sistema Operativo (software) salva el Acta Policial en redacción, garantizando la continuidad del servicio.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="accordion-item border rounded-lg">
+                            <div class="accordion-header p-4 bg-yellow-50 flex justify-between items-center">
+                                <h3 class="font-semibold text-yellow-800 flex items-center gap-2"><i class="fas fa-pencil-alt"></i> Ejercicios (Estudio Autónomo)</h3>
+                                <span class="text-xl text-yellow-800">+</span>
+                            </div>
+                            <div class="accordion-content p-4 border-t">
+                                <ol class="list-decimal list-inside space-y-2">
+                                    <li><strong>Reflexión Profunda:</strong> Investigue el Decreto Presidencial N° 3.390. Escriba un párrafo (15 líneas) explicando cómo el SL fortalece la seguridad nacional y la soberanía.</li>
+                                    <li><strong>Aplicación Offline:</strong> Dibuje un diagrama de una computadora (hardware/software). Identifique el componente más crítico para la seguridad del dato (hardware) y para la seguridad operativa (software).</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Week 2 Section -->
+            <section id="semana2" class="content-section">
+                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                    <h2 class="text-2xl font-bold text-[#A16207] mb-2 flex items-center gap-2">
+                        <i class="fas fa-file-alt"></i>
+                        Semana 2: Ofimática Práctica y Creación de Informes
+                    </h2>
+                    <p class="mb-6 text-gray-600"><strong>Propósito:</strong> Aplicar herramientas ofimáticas para diseñar documentos policiales claros y estandarizados.</p>
+                    <div class="space-y-4">
+                        <div class="accordion-item border rounded-lg">
+                            <div class="accordion-header p-4 bg-yellow-50 flex justify-between items-center">
+                                <h3 class="font-semibold text-yellow-800 flex items-center gap-2"><i class="fas fa-book-open"></i> Contenido Ampliado</h3>
+                                <span class="text-xl text-yellow-800">+</span>
+                            </div>
+                            <div class="accordion-content p-4 border-t">
+                               <ul class="list-disc list-inside space-y-2">
+                                    <li><strong>Cadena de Custodia Digital:</strong> Asegurar que los archivos (pruebas, informes) no sean alterados mediante control de versiones y formatos abiertos.</li>
+                                    <li><strong>Documentos de Texto (Word/Writer):</strong> Uso de plantillas para estandarizar Actas Policiales y minutas, facilitando la revisión legal.</li>
+                                    <li><strong>Hojas de Cálculo (Excel/Calc):</strong> Creación de gráficos para visualizar estadísticas delictivas en el Cuadrante de Paz y medir la eficiencia de la gestión.</li>
+                                    <li><strong>Presentaciones (PowerPoint/Impress):</strong> Elaboración de material didáctico para jornadas de prevención comunitaria, con diseños sencillos y mensajes claros.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="accordion-item border rounded-lg">
+                            <div class="accordion-header p-4 bg-yellow-50 flex justify-between items-center">
+                                <h3 class="font-semibold text-yellow-800 flex items-center gap-2"><i class="fas fa-lightbulb"></i> Ejemplos Prácticos</h3>
+                                <span class="text-xl text-yellow-800">+</span>
+                            </div>
+                            <div class="accordion-content p-4 border-t">
+                               <ul class="list-disc list-inside space-y-2">
+                                    <li><strong>Acta Policial Estandarizada:</strong> Uso de tablas en Writer con campos obligatorios fijos para garantizar el cumplimiento de los requisitos legales.</li>
+                                    <li><strong>Gráfico para Toma de Decisiones:</strong> Usar Calc para graficar la incidencia delictiva trimestral y presentarla en una asamblea de ciudadanos para justificar operativos.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="accordion-item border rounded-lg">
+                            <div class="accordion-header p-4 bg-yellow-50 flex justify-between items-center">
+                                <h3 class="font-semibold text-yellow-800 flex items-center gap-2"><i class="fas fa-pencil-alt"></i> Ejercicios (Estudio Autónomo)</h3>
+                                <span class="text-xl text-yellow-800">+</span>
+                            </div>
+                            <div class="accordion-content p-4 border-t">
+                               <ol class="list-decimal list-inside space-y-2">
+                                    <li><strong>Documentación Offline:</strong> Diseñe una plantilla de informe de novedades en su procesador de texto, incluyendo encabezado, campos fijos y un campo de "Recomendaciones".</li>
+                                    <li><strong>Análisis Estadístico Offline:</strong> Cree una hoja de cálculo con datos simulados de delitos y calcule la eficiencia del patrullaje. Genere un gráfico de barras.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Week 3 Section -->
+            <section id="semana3" class="content-section">
+                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                    <h2 class="text-2xl font-bold text-[#A16207] mb-2 flex items-center gap-2">
+                        <i class="fas fa-globe-americas"></i>
+                        Semana 3: TICs para la Transformación Social
+                    </h2>
+                    <p class="mb-6 text-gray-600"><strong>Propósito:</strong> Analizar el potencial de las TICs como motor de empoderamiento comunitario en la Seguridad Ciudadana.</p>
+                     <div class="space-y-4">
+                        <div class="accordion-item border rounded-lg">
+                            <div class="accordion-header p-4 bg-yellow-50 flex justify-between items-center">
+                                <h3 class="font-semibold text-yellow-800 flex items-center gap-2"><i class="fas fa-book-open"></i> Contenido Ampliado</h3>
+                                <span class="text-xl text-yellow-800">+</span>
+                            </div>
+                            <div class="accordion-content p-4 border-t">
+                               <ul class="list-disc list-inside space-y-2">
+                                    <li><strong>TICs y Democracia Protagónica:</strong> Herramientas para que el ciudadano ejerza control sobre la gestión pública y exija rendición de cuentas.</li>
+                                    <li><strong>Correo Electrónico UNES:</strong> Canal oficial para la comunicación estratégica, órdenes e informes, siguiendo normas de seguridad y etiqueta.</li>
+                                    <li><strong>Redes Sociales y Guerra Informativa:</strong> Uso como canal de denuncia, prevención y para combatir *Fake News*, posicionando al PNB como agente de comunicación responsable.</li>
+                                    <li><strong>Objetivo de TICs en Seguridad:</strong> Pasar de una respuesta reactiva a una prevención proactiva mediante el análisis de datos en tiempo real.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="accordion-item border rounded-lg">
+                            <div class="accordion-header p-4 bg-yellow-50 flex justify-between items-center">
+                                <h3 class="font-semibold text-yellow-800 flex items-center gap-2"><i class="fas fa-lightbulb"></i> Ejemplos Prácticos</h3>
+                                <span class="text-xl text-yellow-800">+</span>
+                            </div>
+                            <div class="accordion-content p-4 border-t">
+                               <ul class="list-disc list-inside space-y-2">
+                                    <li><strong>Control de Rumores:</strong> Usar la cuenta oficial de la PNB para desmentir una *Fake News* sobre un toque de queda, promoviendo la calma y la información verificada.</li>
+                                    <li><strong>Comunicación Oficial:</strong> Enviar un informe cifrado sobre mantenimiento de equipos vía correo UNES para asegurar la trazabilidad del requerimiento.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="accordion-item border rounded-lg">
+                            <div class="accordion-header p-4 bg-yellow-50 flex justify-between items-center">
+                                <h3 class="font-semibold text-yellow-800 flex items-center gap-2"><i class="fas fa-pencil-alt"></i> Ejercicios (Estudio Autónomo)</h3>
+                                <span class="text-xl text-yellow-800">+</span>
+                            </div>
+                            <div class="accordion-content p-4 border-t">
+                               <ol class="list-decimal list-inside space-y-2">
+                                    <li><strong>Análisis Ético Offline:</strong> Elabore una 'Política de Uso' para el PNB en redes sociales con 3 normas de conducta, detallando la consecuencia social de violarlas.</li>
+                                    <li><strong>Simulación de Respuesta:</strong> Redacte la respuesta formal vía correo a un líder comunitario que reporta una falla de alumbrado, describiendo los pasos para escalar la solicitud.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Week 4 Section -->
+            <section id="semana4" class="content-section">
+                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                    <h2 class="text-2xl font-bold text-[#A16207] mb-2 flex items-center gap-2">
+                        <i class="fas fa-graduation-cap"></i>
+                        Semana 4: TICs para la Formación y Contexto Regional
+                    </h2>
+                    <p class="mb-6 text-gray-600"><strong>Propósito:</strong> Comprender la formación virtual (Moodle) como medio de desarrollo profesional y analizar tecnologías en el contexto regional.</p>
+                     <div class="space-y-4">
+                        <div class="accordion-item border rounded-lg">
+                            <div class="accordion-header p-4 bg-yellow-50 flex justify-between items-center">
+                                <h3 class="font-semibold text-yellow-800 flex items-center gap-2"><i class="fas fa-book-open"></i> Contenido Ampliado</h3>
+                                <span class="text-xl text-yellow-800">+</span>
+                            </div>
+                            <div class="accordion-content p-4 border-t">
+                               <ul class="list-disc list-inside space-y-2">
+                                    <li><strong>Plataforma Moodle y Equidad:</strong> Entorno Virtual de Aprendizaje que garantiza el acceso a la formación continua, superando barreras geográficas y logísticas.</li>
+                                    <li><strong>Formación Virtual UNES:</strong> Beneficios (flexibilidad, actualización) y desafíos (brecha digital, auto-disciplina).</li>
+                                    <li><strong>Cooperación Sur-Sur:</strong> Análisis de tecnologías en países del ALBA o CELAC para compartir experiencias y evitar la dependencia tecnológica del Norte.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="accordion-item border rounded-lg">
+                            <div class="accordion-header p-4 bg-yellow-50 flex justify-between items-center">
+                                <h3 class="font-semibold text-yellow-800 flex items-center gap-2"><i class="fas fa-lightbulb"></i> Ejemplos Prácticos</h3>
+                                <span class="text-xl text-yellow-800">+</span>
+                            </div>
+                            <div class="accordion-content p-4 border-t">
+                               <ul class="list-disc list-inside space-y-2">
+                                    <li><strong>Formación Remota:</strong> Un PNB en una zona rural toma un curso de actualización sobre desescalamiento de conflictos a través de Moodle en su tiempo libre.</li>
+                                    <li><strong>Intercambio de Saberes:</strong> Un grupo compara el sistema de denuncias por App de otro país con el modelo de Cuadrantes de Paz para extraer lecciones prácticas.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="accordion-item border rounded-lg">
+                            <div class="accordion-header p-4 bg-yellow-50 flex justify-between items-center">
+                                <h3 class="font-semibold text-yellow-800 flex items-center gap-2"><i class="fas fa-pencil-alt"></i> Ejercicios (Estudio Autónomo)</h3>
+                                <span class="text-xl text-yellow-800">+</span>
+                            </div>
+                            <div class="accordion-content p-4 border-t">
+                               <ol class="list-decimal list-inside space-y-2">
+                                    <li><strong>Investigación Grupal:</strong> Compare una herramienta tecnológica de seguridad de dos países latinoamericanos y reflexione sobre su aplicabilidad en Venezuela.</li>
+                                    <li><strong>Plan de Estudio Offline:</strong> Describa cómo organizaría su estudio si solo tuviera el material impreso, usando creatividad para superar la brecha digital.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Week 5 Section -->
+            <section id="semana5" class="content-section">
+                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                    <h2 class="text-2xl font-bold text-[#A16207] mb-2 flex items-center gap-2">
+                        <i class="fas fa-siren-on"></i>
+                        Semana 5: TICs y la Práctica de Seguridad en Venezuela
+                    </h2>
+                    <p class="mb-6 text-gray-600"><strong>Propósito:</strong> Valorar las políticas y herramientas tecnológicas implementadas por el Estado venezolano para la seguridad ciudadana.</p>
+                     <div class="space-y-4">
+                        <div class="accordion-item border rounded-lg">
+                            <div class="accordion-header p-4 bg-yellow-50 flex justify-between items-center">
+                                <h3 class="font-semibold text-yellow-800 flex items-center gap-2"><i class="fas fa-book-open"></i> Contenido Ampliado</h3>
+                                <span class="text-xl text-yellow-800">+</span>
+                            </div>
+                            <div class="accordion-content p-4 border-t">
+                               <ul class="list-disc list-inside space-y-2">
+                                    <li><strong>Plan de la Patria (2019-2025):</strong> Impulsa las TICs como herramientas para la defensa integral, la soberanía y la paz nacional.</li>
+                                    <li><strong>VEN 911:</strong> Centro neurálgico que articula la coordinación de emergencias, geolocaliza incidentes y despacha el recurso más cercano.</li>
+                                    <li><strong>SIMA y Apps Cuadrantes de Paz:</strong> El SIMA centraliza la data operativa para la inteligencia policial, mientras que las Apps son la herramienta móvil para la vinculación directa con la comunidad y la respuesta territorializada.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Gemini Feature 2: Case Study Generator -->
+                        <div class="accordion-item border rounded-lg mt-6">
+                            <div class="accordion-header p-4 bg-[#FDE68A] flex justify-between items-center">
+                                <h3 class="font-bold text-yellow-900 flex items-center gap-2">
+                                    <i class="fas fa-map-marked-alt"></i>
+                                    Generador de Caso Práctico ✨
+                                </h3>
+                                <span class="text-xl text-yellow-900">+</span>
+                            </div>
+                            <div class="accordion-content p-4 border-t">
+                                <p class="text-sm mb-4 text-gray-700">Ingrese un tipo de delito o situación de seguridad (ej: 'robo a mano armada', 'desaparecido', 'emergencia médica') para recibir un escenario que debe resolver usando las herramientas VEN 911, SIMA y Cuadrantes de Paz.</p>
+                                <div class="flex flex-col md:flex-row gap-2">
+                                    <input type="text" id="caseInput" placeholder="Ej: Venta de drogas en un Cuadrante..." class="flex-grow p-2 border rounded-lg focus:ring-[#A16207] focus:border-[#A16207]">
+                                    <button id="generateCaseBtn" class="bg-yellow-600 text-white p-2 rounded-lg hover:bg-yellow-700 transition-colors duration-200 font-semibold flex-shrink-0">
+                                        Crear Escenario ✨
+                                    </button>
+                                </div>
+                                <div id="caseOutput" class="mt-4 p-3 bg-white border border-gray-300 rounded-lg min-h-[50px] text-gray-800">
+                                    <p class="text-sm italic text-gray-500">El caso de estudio práctico aparecerá aquí, listo para ser analizado.</p>
+                                </div>
+                                <div id="caseLoading" class="mt-2 text-sm text-yellow-800 hidden">Generando escenario operativo, espere un momento...</div>
+                            </div>
+                        </div>
+                        <!-- End Gemini Feature 2 -->
+
+                        <div class="accordion-item border rounded-lg">
+                            <div class="accordion-header p-4 bg-yellow-50 flex justify-between items-center">
+                                <h3 class="font-semibold text-yellow-800 flex items-center gap-2"><i class="fas fa-lightbulb"></i> Ejemplos Prácticos</h3>
+                                <span class="text-xl text-yellow-800">+</span>
+                            </div>
+                            <div class="accordion-content p-4 border-t">
+                               <ul class="list-disc list-inside space-y-2">
+                                    <li><strong>Respuesta Coordinada:</strong> Un ciudadano reporta por la App Cuadrantes de Paz. La alerta georreferenciada llega al VEN 911, que dirige a la unidad PNB más cercana registrada en SIMA.</li>
+                                    <li><strong>Transparencia y Gestión:</strong> Un funcionario consulta estadísticas de gestión en el portal web del MPPRIJP y las comparte con la comunidad como rendición de cuentas.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="accordion-item border rounded-lg">
+                            <div class="accordion-header p-4 bg-yellow-50 flex justify-between items-center">
+                                <h3 class="font-semibold text-yellow-800 flex items-center gap-2"><i class="fas fa-pencil-alt"></i> Ejercicios (Estudio Autónomo)</h3>
+                                <span class="text-xl text-yellow-800">+</span>
+                            </div>
+                            <div class="accordion-content p-4 border-t">
+                               <ol class="list-decimal list-inside space-y-2">
+                                    <li><strong>Vinculación Profunda:</strong> Escoja un Objetivo Histórico del Plan de la Patria y describa cómo la operación del VEN 911 contribuye a su cumplimiento.</li>
+                                    <li><strong>Ficha Técnica:</strong> Complete una ficha de la App Cuadrantes de Paz, detallando su propósito, funcionalidades e impacto en el vínculo Policía-Poder Popular.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Week 6 Section -->
+            <section id="semana6" class="content-section">
+                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                    <h2 class="text-2xl font-bold text-[#A16207] mb-2 flex items-center gap-2">
+                        <i class="fas fa-robot"></i>
+                        Semana 6: Inteligencia Artificial para la Prevención del Delito
+                    </h2>
+                    <p class="mb-6 text-gray-600"><strong>Propósito:</strong> Reconocer el potencial de la IA como herramienta estratégica, ética y humanista para la seguridad ciudadana.</p>
+                     <div class="space-y-4">
+                        <div class="accordion-item border rounded-lg">
+                            <div class="accordion-header p-4 bg-yellow-50 flex justify-between items-center">
+                                <h3 class="font-semibold text-yellow-800 flex items-center gap-2"><i class="fas fa-book-open"></i> Contenido Ampliado</h3>
+                                <span class="text-xl text-yellow-800">+</span>
+                            </div>
+                            <div class="accordion-content p-4 border-t">
+                               <ul class="list-disc list-inside space-y-2">
+                                    <li><strong>Conceptos de IA:</strong> Sistemas que imitan la inteligencia humana. Incluye *Machine Learning* (aprender de datos históricos) y Reconocimiento de Patrones (identificar tendencias).</li>
+                                    <li><strong>Uso Ético en Prevención:</strong> Análisis predictivo para optimizar el patrullaje (no para perfilar ciudadanos) y detección de anomalías para una intervención temprana.</li>
+                                    <li><strong>Discusión Humanista de la IA:</strong> La IA debe ser una herramienta de apoyo, nunca un reemplazo del juicio humano. Se debe combatir el riesgo del sesgo algorítmico, que puede replicar injusticias sociales.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="accordion-item border rounded-lg">
+                            <div class="accordion-header p-4 bg-yellow-50 flex justify-between items-center">
+                                <h3 class="font-semibold text-yellow-800 flex items-center gap-2"><i class="fas fa-lightbulb"></i> Ejemplos Prácticos</h3>
+                                <span class="text-xl text-yellow-800">+</span>
+                            </div>
+                            <div class="accordion-content p-4 border-t">
+                               <ul class="list-disc list-inside space-y-2">
+                                    <li><strong>Optimización de Recursos:</strong> Un sistema de IA analiza data y recomienda incrementar patrullaje en un sector específico a una hora determinada, liberando recursos para otras tareas.</li>
+                                    <li><strong>Juicio Humano Prevalece:</strong> La IA clasifica una llamada como "alta prioridad", pero el funcionario humano verifica el contexto y aplica su criterio antes de despachar, garantizando una respuesta empática.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="accordion-item border rounded-lg">
+                            <div class="accordion-header p-4 bg-yellow-50 flex justify-between items-center">
+                                <h3 class="font-semibold text-yellow-800 flex items-center gap-2"><i class="fas fa-pencil-alt"></i> Ejercicios (Estudio Autónomo)</h3>
+                                <span class="text-xl text-yellow-800">+</span>
+                            </div>
+                            <div class="accordion-content p-4 border-t">
+                               <ol class="list-decimal list-inside space-y-2">
+                                    <li><strong>Pensamiento Crítico:</strong> Si una IA predice delitos basándose en el nivel socioeconómico, ¿qué principio humanista se viola? Proponga un mecanismo de supervisión humana.</li>
+                                    <li><strong>Síntesis de Proyecto Final:</strong> Desarrolle la idea de una "Solución Tecnológica de Bajo Costo" para su Cuadrante, especificando el problema que resuelve, la función de IA simple que usaría y el tipo de dato que necesitaría.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabs = document.querySelectorAll('.tab-button');
+            const contentSections = document.querySelectorAll('.content-section');
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            const accordions = document.querySelectorAll('.accordion-header');
+            
+            // LLM Elements
+            const termInput = document.getElementById('termInput');
+            const termOutput = document.getElementById('termOutput');
+            const termLoading = document.getElementById('termLoading');
+            const generateTermBtn = document.getElementById('generateTermBtn');
+
+            const caseInput = document.getElementById('caseInput');
+            const caseOutput = document.getElementById('caseOutput');
+            const caseLoading = document.getElementById('caseLoading');
+            const generateCaseBtn = document.getElementById('generateCaseBtn');
+
+            function showTab(tabId) {
+                tabs.forEach(tab => {
+                    if (tab.dataset.tab === tabId) {
+                        tab.classList.add('tab-active');
+                    } else {
+                        tab.classList.remove('tab-active');
+                    }
+                });
+
+                contentSections.forEach(section => {
+                    if (section.id === tabId) {
+                        section.classList.add('active');
+                    } else {
+                        section.classList.remove('active');
+                    }
+                });
+            }
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    showTab(tab.dataset.tab);
+                });
+            });
+
+            timelineItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    showTab(item.dataset.tabTarget);
+                });
+            });
+
+            accordions.forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    const icon = header.querySelector('span');
+                    
+                    if(content.classList.contains('open')) {
+                        content.classList.remove('open');
+                        icon.textContent = '+';
+                    } else {
+                        content.classList.add('open');
+                        icon.textContent = '-';
+                    }
+                });
+            });
+            
+            showTab('introduccion');
+
+            const ctx = document.getElementById('skillsChart').getContext('2d');
+            const skillsChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: [
+                        'Semana 1: Conciencia Crítica', 
+                        'Semana 2: Eficiencia y Rigurosidad', 
+                        'Semana 3: Responsabilidad y Ética', 
+                        'Semana 4: Visión Comparada', 
+                        'Semana 5: Compromiso con Doctrina', 
+                        'Semana 6: Pensamiento Crítico'
+                    ],
+                    datasets: [{
+                        label: 'Foco de Habilidad/Actitud Desarrollada',
+                        data: [5, 4, 5, 3, 5, 6],
+                        backgroundColor: 'rgba(161, 98, 7, 0.2)',
+                        borderColor: 'rgba(161, 98, 7, 1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: 'rgba(161, 98, 7, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(161, 98, 7, 1)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            },
+                            pointLabels: {
+                                font: {
+                                    size: 10
+                                },
+                                color: '#36454F'
+                            },
+                            ticks: {
+                                backdropColor: 'rgba(254, 252, 232, 1)',
+                                color: '#4A5568',
+                                stepSize: 1
+                            },
+                            suggestedMin: 0,
+                            suggestedMax: 6
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                color: '#36454F'
+                            }
+                        },
+                        tooltip: {
+                             callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    return context.label.split(': ')[1];
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=";
+            const API_KEY = ""; // Key is managed by the execution environment
+
+            async function geminiApiCall(payload, maxRetries = 5) {
+                let response = null;
+                for (let i = 0; i < maxRetries; i++) {
+                    try {
+                        response = await fetch(GEMINI_API_URL + API_KEY, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+                        if (response.ok) {
+                            return await response.json();
+                        } else if (response.status === 429) {
+                            await new Promise(resolve => setTimeout(resolve, Math.pow(2, i) * 1000));
+                        } else {
+                            break;
+                        }
+                    } catch (error) {
+                        break;
+                    }
+                }
+                throw new Error("Fallo en la llamada a la API de Gemini.");
+            }
+
+            // --- Feature 1: Terminology Explainer Logic ---
+            generateTermBtn.addEventListener('click', async () => {
+                const term = termInput.value.trim();
+                if (!term) {
+                    termOutput.innerHTML = '<p class="text-sm text-red-600">Por favor, ingrese un término para buscar.</p>';
+                    return;
+                }
+                
+                termLoading.classList.remove('hidden');
+                termOutput.innerHTML = '';
+                generateTermBtn.disabled = true;
+
+                const systemPrompt = `Eres un asistente educativo de la Universidad Nacional Experimental de la Seguridad (UNES) en Venezuela. Tu misión es definir conceptos de tecnología, seguridad y soberanía. Responde con un único párrafo conciso y directo, enfocándote en la relevancia del concepto para la Seguridad Ciudadana, el humanismo, y la soberanía tecnológica del Estado venezolano.`;
+
+                const userQuery = `Define el concepto de "${term}" y explica su importancia en el contexto del modelo de Seguridad Ciudadana de Venezuela, usando las políticas nacionales si es necesario.`;
+
+                const payload = {
+                    contents: [{ parts: [{ text: userQuery }] }],
+                    tools: [{ "google_search": {} }],
+                    systemInstruction: { parts: [{ text: systemPrompt }] },
+                };
+
+                try {
+                    const result = await geminiApiCall(payload);
+                    const text = result.candidates?.[0]?.content?.parts?.[0]?.text || "No se pudo generar la definición. Intente con un término más específico.";
+                    
+                    termOutput.innerHTML = `<p class="text-sm">${text}</p>`;
+
+                } catch (error) {
+                    termOutput.innerHTML = `<p class="text-sm text-red-600">Error: No se pudo obtener la definición. Verifique su conexión.</p>`;
+                } finally {
+                    termLoading.classList.add('hidden');
+                    generateTermBtn.disabled = false;
+                }
+            });
+
+            // --- Feature 2: Case Study Generator Logic ---
+            generateCaseBtn.addEventListener('click', async () => {
+                const situation = caseInput.value.trim() || "robo de un vehículo en un Cuadrante de Paz";
+                
+                caseLoading.classList.remove('hidden');
+                caseOutput.innerHTML = '';
+                generateCaseBtn.disabled = true;
+
+                const systemPrompt = `Eres un instructor de la PNB. Debes crear un escenario de práctica policial enfocado en la aplicación de las TICs venezolanas. Genera un único párrafo que describa una situación de seguridad ciudadana que requiera la intervención del VEN 911, el análisis de data del SIMA y la acción coordinada del Cuadrante de Paz correspondiente. NO incluyas la solución, solo describe el caso.`;
+
+                const userQuery = `Genera un escenario complejo y realista sobre: ${situation}. El caso debe involucrar la coordinación entre el ciudadano, el VEN 911, y la unidad PNB del Cuadrante de Paz.`;
+
+                const payload = {
+                    contents: [{ parts: [{ text: userQuery }] }],
+                    tools: [{ "google_search": {} }],
+                    systemInstruction: { parts: [{ text: systemPrompt }] },
+                };
+
+                try {
+                    const result = await geminiApiCall(payload);
+                    const text = result.candidates?.[0]?.content?.parts?.[0]?.text || "No se pudo generar el escenario. Intente con una situación diferente.";
+                    
+                    caseOutput.innerHTML = `<p class="text-sm font-semibold text-yellow-900">ESCENARIO OPERATIVO:</p><p class="text-sm mt-2">${text}</p><p class="text-xs italic mt-3">Tarea: Describa el flujo de acción, desde la denuncia hasta la resolución, nombrando la herramienta tecnológica utilizada en cada paso.</p>`;
+
+                } catch (error) {
+                    caseOutput.innerHTML = `<p class="text-sm text-red-600">Error: No se pudo generar el escenario. Verifique su conexión.</p>`;
+                } finally {
+                    caseLoading.classList.add('hidden');
+                    generateCaseBtn.disabled = false;
+                }
+            });
+        });
+    </script>
+</body>
+</html><!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Página sin título</title>
+<meta name="generator" content="WYSIWYG Web Builder 19 - https://www.wysiwygwebbuilder.com">
+<link href="Sin_título2.css" rel="stylesheet">
+<link href="index.css" rel="stylesheet">
+</head>
+<body>
+</body>
+</html>
